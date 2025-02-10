@@ -4,3 +4,5 @@ pandas
 matplotlib
 scikit-learn
 streamlit
+model_signing
+sigstore
