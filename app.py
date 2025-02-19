@@ -137,6 +137,7 @@ with st.expander("Cultural Patterns and Trends"):
 
 st.markdown("### 3) Correlation between features")
 with st.expander("Correlation between features"):
+with st.expander("Dancability and acousticness"):
   fig, ax = plt.subplots()
   ax.scatter(x=df["danceability"]*100,y=df["popularity"],alpha = 0.09, color = "#7C444F")
   ax.set_xlabel("dancability in %")
