@@ -150,6 +150,15 @@ with st.expander("Dancability and acousticness"):
   """As the plot displays, the most popular songs have a medium or high danceability.
   Nevertheless, it is likely that the popularity does not only depend on the dancability.
   """
+with st.expander("Song length per year"):
+  fig, ax = plt.subplots()
+  ax.scatter(x=df["year"],y=df["duration_ms"],alpha = 0.9, color = "#7C444F")
+  ax.set_xlabel("year")
+  ax.set_ylabel("song length")
+  ax.set_title("Relation beween release year and song length")
+  ax.grid(True)
+  fig.tight_layout()
+  plt.show()
 
 def contrast_coding(df, column_name):
     df[column_name] = df[column_name].astype('category')
