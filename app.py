@@ -41,6 +41,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.neighbors import NearestNeighbors
 import streamlit as st
+import seaborn as sns
 
 def streamlit_setup():
   st.set_page_config(
@@ -159,6 +160,25 @@ with st.expander("Song length per year"):
   ax.grid(True)
   fig.tight_layout()
   plt.show()
+
+with st.expander("Development of patterns over the year"):
+    sns.set(style="whitegrid")
+    plt.figure(figsize=(12, 8))
+    sns.lineplot(data=df, x='year', y=df['tempo'], marker='o', label='Tempo', color='#D2665A')
+    sns.lineplot(data=df, x='year', y=df['valence']*100, marker='o', label='valence (*10)', color='#F2B28C')
+    sns.lineplot(data=df, x='year', y=df['duration_ms'] / 6000, marker='o', label='Length (seconds)', color='#F6DED8')
+    
+    # Set plot title and labels
+    plt.title('Distribution of Features over Time')
+    plt.xlabel('Release Year')
+    plt.ylabel('Feature Value')
+    
+    # Show legend
+    plt.legend()
+    
+    # Show the plot
+    plt.tight_layout()
+    plt.show()
 
 def contrast_coding(df, column_name):
     df[column_name] = df[column_name].astype('category')
